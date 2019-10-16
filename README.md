@@ -22,7 +22,7 @@ data文件夹中存放train.csv, dev.csv, test.csv
 
 ### 3. 模型训练
 运行如下代码，BERT_BASE_DIR为加载预训练模型，DATA_DIR为数据存放文件夹，TRAINED_CLASSIFIER为加载模型
-```python
+```bash
 export BERT_BASE_DIR=./pretrain_models/roeberta_zh_L-24_H-1024_A-16
 export DATA_DIR=./multi_label_classifier/data
 export TRAINED_CLASSIFIER=./pretrain_models/roeberta_zh_L-24_H-1024_A-16
@@ -42,7 +42,7 @@ python run_classifier.py \
 ### 4. 模型预测
 运行如下代码，BERT_BASE_DIR为加载预训练模型，DATA_DIR为数据存放文件夹，TRAINED_CLASSIFIER为已fine-tuning后的模型
 
-```python
+```bash
 export BERT_BASE_DIR=./pretrain_models/roeberta_zh_L-24_H-1024_A-16
 export DATA_DIR=./multi_label_classifier/data
 export TRAINED_CLASSIFIER=./pretrain_models/multi_label_classifier/mlc_output/model.ckpt-10000
