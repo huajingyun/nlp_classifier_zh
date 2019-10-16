@@ -61,5 +61,6 @@ python run_classifier.py \
 ```
 
 ## Reference：  
-1. bert https://github.com/google-research/bert
-2. roberta https://github.com/brightmart/roberta_zh
+1. [RoBERTa: A Robustly Optimized BERT Pretraining Approach](https://github.com/google-research/bert)
+2. [BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding](https://github.com/brightmart/roberta_zh)
+
