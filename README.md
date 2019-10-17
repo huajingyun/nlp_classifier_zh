@@ -1,7 +1,7 @@
-[中文说明](https://github.com/AarynBaelish/nlp_classifier_zh/blob/master/README.md) | [English](https://github.com/AarynBaelish/nlp_classifier_zh/blob/master/README_EN.md)
+[**中文说明**](./README.md) | [**English**](./README_EN.md)
 
 # nlp_classifier_zh
-本项目包含了面向中文的两种分类模型，包括了multi-class和multi-label两种分类问题，采用的预训练模型为目前SOTA的[RoBERTa-zh-Large](https://github.com/brightmart/roberta_zh)模型进行finetuning。
+本项目包含了面向中文的两种分类模型，包括了`multi-class`和`multi-label`两种分类问题，采用的预训练模型为目前SOTA的[RoBERTa-zh-Large](https://github.com/brightmart/roberta_zh)模型进行finetuning。
 
 # multi_label_classifier  
 ### 1. 数据准备
@@ -16,12 +16,12 @@ data文件夹中存放train.csv, dev.csv, test.csv
 
 
 ### 2.代码
-在bert代码的基础之上，仅需修改run_classifier.py文件，  
-其中添加MultiLabelClassifierProcessor类，将其中tf.nn.softmax()改为sigmoid  
+在bert代码的基础之上，仅需修改`run_classifier.py`文件，  
+其中添加`MultiLabelClassifierProcessor`类，将其中`tf.nn.softmax()`改为`sigmoid`  
 更多细节详见代码
 
 ### 3. 模型训练
-运行如下代码，BERT_BASE_DIR为加载预训练模型，DATA_DIR为数据存放文件夹，TRAINED_CLASSIFIER为加载模型
+运行如下代码，`BERT_BASE_DIR`为加载预训练模型，`DATA_DIR`为数据存放文件夹，`TRAINED_CLASSIFIER`为加载模型
 ```bash
 export BERT_BASE_DIR=./pretrain_models/roeberta_zh_L-24_H-1024_A-16
 export DATA_DIR=./multi_label_classifier/data
@@ -40,7 +40,7 @@ python run_classifier.py \
 ```
 
 ### 4. 模型预测
-运行如下代码，BERT_BASE_DIR为加载预训练模型，DATA_DIR为数据存放文件夹，TRAINED_CLASSIFIER为已fine-tuning后的模型
+运行如下代码，`BERT_BASE_DIR`为加载预训练模型，`DATA_DIR`为数据存放文件夹，`TRAINED_CLASSIFIER`为已fine-tuning后的模型
 
 ```bash
 export BERT_BASE_DIR=./pretrain_models/roeberta_zh_L-24_H-1024_A-16
