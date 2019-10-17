@@ -1,12 +1,13 @@
-[中文说明](https://github.com/AarynBaelish/nlp_classifier_zh/blob/master/README.md) | [English](https://github.com/AarynBaelish/nlp_classifier_zh/blob/master/README_EN.md)
+[**中文说明**](./README.md) | [**English**](./README_EN.md)
 
 # nlp_classifier_zh
-本项目包含了面向中文的两种分类模型，包括了multi-class和multi-label两种分类问题，采用的预训练模型为目前SOTA的[RoBERTa-zh-Large](https://github.com/brightmart/roberta_zh)模型进行finetuning。
+this project includes two classifier: multi-class case and multi-label case,  
+and both fine-tune based on [RoBERTa-zh-Large](https://github.com/brightmart/roberta_zh).  
 
 # multi_label_classifier  
-### 1. 数据准备
-data文件夹中存放train.csv, dev.csv, test.csv    
-文件格式：(label部分类似one-hot格式)  
+### 1. dataset prepare
+data fold includes train.csv, dev.csv, test.csv      
+example：(like one-hot encode)  
 
 | index | text | a | b | c | d | e | f |  
 |-------|------|---|---|---|---|---|---|  
@@ -15,13 +16,14 @@ data文件夹中存放train.csv, dev.csv, test.csv
 |  2    |   C  | 1 | 1 | 0 | 0 | 0 | 1 | 
 
 
-### 2.代码
-在bert代码的基础之上，仅需修改run_classifier.py文件，  
-其中添加MultiLabelClassifierProcessor类，将其中tf.nn.softmax()改为sigmoid  
-更多细节详见代码
+### 2.code
+just modify `run_classifier.py` based on raw bert code,  
+add `MultiLabelClassifierProcessor` Class, use `sigmoid` replace `tf.nn.softmax()`   
+for more detail, [run_classifier.py](https://github.com/AarynBaelish/nlp_classifier_zh/blob/master/multi_label_classifier/run_classifier.py)  
 
-### 3. 模型训练
-运行如下代码，BERT_BASE_DIR为加载预训练模型，DATA_DIR为数据存放文件夹，TRAINED_CLASSIFIER为加载模型
+### 3. model train  
+This example code fine-tunes RoBERTa-zh-Large on your own train.csv and evalutes on dev.csv. `BERT_BASE_DIR` is RoBERTa-zh-Large path, `DATA_DIR` is data fold path，`TRAINED_CLASSIFIER` is RoBERTa-zh-Large path here.
+
 ```bash
 export BERT_BASE_DIR=./pretrain_models/roeberta_zh_L-24_H-1024_A-16
 export DATA_DIR=./multi_label_classifier/data
@@ -39,8 +41,8 @@ python run_classifier.py \
   --output_dir=./multi_label_classifier/mlc_output/
 ```
 
-### 4. 模型预测
-运行如下代码，BERT_BASE_DIR为加载预训练模型，DATA_DIR为数据存放文件夹，TRAINED_CLASSIFIER为已fine-tuning后的模型
+### 4. model predict
+This example code predicts your own test.csv data.`BERT_BASE_DIR` is RoBERTa-zh-Large path, `DATA_DIR` is data fold path，`TRAINED_CLASSIFIER` is your own fine-tuned model path here.
 
 ```bash
 export BERT_BASE_DIR=./pretrain_models/roeberta_zh_L-24_H-1024_A-16
